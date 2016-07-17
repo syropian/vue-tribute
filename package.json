@@ -1,6 +1,6 @@
 {
   "name": "vue-prosemirror",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple Vue.js wrapper around the ProseMirror editor",
   "license": "MIT",
   "repository": "syropian/vue-prosemirror",
