@@ -2,7 +2,7 @@
 
 > A simple Vue.js wrapper around the ProseMirror editor
 
-## Install (not available yet)
+## Install
 
 ```js
 $ npm install vue-prosemirror --save
