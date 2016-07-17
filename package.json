@@ -1,0 +1,42 @@
+{
+  "name": "vue-prosemirror",
+  "version": "0.1.0",
+  "description": "A simple Vue.js wrapper around the ProseMirror editor",
+  "license": "MIT",
+  "repository": "syropian/vue-prosemirror",
+  "author": {
+    "name": "Collin Henderson",
+    "email": "collin@syropia.net",
+    "url": "http://syropia.net"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "build:all": "npm run build && npm run build:umd",
+    "build": "BUILD_ENV=cjs rollup -c",
+    "build:umd": "BUILD_ENV=umd rollup -c",
+    "example": "vbuild --dev -e example",
+    "example:build": "vbuild -e example -t VueProseMirror"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "index.umd.js"
+  ],
+  "keywords": [
+    "prosemirror",
+    "editor",
+    "markdown",
+    "Vue"
+  ],
+  "dependencies": {
+    "prosemirror": "^0.8.3"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "rollup": "^0.33.0",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-vue": "^2.0.1"
+  }
+}
