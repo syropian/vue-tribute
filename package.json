@@ -13,11 +13,9 @@
     "node": ">=4"
   },
   "scripts": {
-    "build:all": "npm run build && npm run build:umd",
     "build": "BUILD_ENV=cjs rollup -c",
-    "build:umd": "BUILD_ENV=umd rollup -c",
     "example": "vbuild --dev -e example",
-    "example:build": "vbuild -e example -t VueProseMirror"
+    "example:build": "vbuild -e example -t VueProsemirror"
   },
   "main": "index.js",
   "files": [
