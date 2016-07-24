@@ -17,7 +17,9 @@
     "build": "BUILD_ENV=cjs rollup -c",
     "build:umd": "BUILD_ENV=umd rollup -c",
     "example": "vbuild --dev -e example",
-    "example:build": "vbuild -e example -t VueInputAutosize"
+    "example:build": "vbuild -e example -t VueInputAutosize",
+    "test": "karma start karma.conf.js --single-run true --auto-watch false",
+    "watch-test": "karma start karma.conf.js --single-run false --auto-watch true"
   },
   "main": "index.js",
   "files": [
@@ -33,8 +35,23 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
     "babel-preset-es2015-rollup": "^1.1.1",
+    "babel-runtime": "^6.9.2",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^1.1.1",
+    "karma-browserify": "^5.1.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-spec-reporter": "0.0.26",
+    "phantomjs-prebuilt": "^2.1.7",
     "rollup": "^0.33.0",
-    "rollup-plugin-babel": "^2.6.1"
+    "rollup-plugin-babel": "^2.6.1",
+    "vue": "^1.0.26",
+    "watchify": "^3.7.0"
   }
 }
