@@ -10,7 +10,12 @@ $ npm install vue-input-autosize --save
 
 ## Usage
 
-Coming soon...
+```js
+import Vue from "vue";
+import VueInputAutosize from "vue-input-autosize";
+
+Vue.use(VueInputAutosize, { maxWidth: 500, minWidth: 20, comfortZone: 0 });
+```
 
 ## Development
 
