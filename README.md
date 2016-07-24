@@ -1,11 +1,11 @@
-# vue-prosemirror
+# vue-input-autosize
 
-> A simple Vue.js wrapper around the ProseMirror editor
+> A simple Vue.js directive for autosizing a text input based on its content.
 
 ## Install
 
 ```js
-$ npm install vue-prosemirror --save
+$ npm install vue-input-autosize --save
 ```
 
 ## Usage
@@ -19,4 +19,4 @@ Coming soon...
 ## TODO
 
 - [ ] Tests
-- [ ] Tidy up example
+- [ ] Improve the example

@@ -1,14 +1,12 @@
-'use strict';
+"use strict";
 
-exports.install = function (Vue, options) {
+exports.install = function(Vue, options){
   Vue.directive("input-autosize", {
     mirror: null,
     val: " ",
     options: {},
-    bind: function bind() {
-      var _this = this;
-
-      var defaults = { maxWidth: 500, minWidth: 20, comfortZone: 0 };
+    bind(){
+      const defaults = { maxWidth: 500, minWidth: 20, comfortZone: 0 };
       this.options = Object.assign(defaults, options || {});
 
       this.mirror = document.createElement("span");
@@ -16,9 +14,9 @@ exports.install = function (Vue, options) {
       document.body.appendChild(this.mirror);
 
       this.el.addEventListener("input", this.check.bind(this, this.el), false);
-      setTimeout(function () {
-        var styles = window.getComputedStyle(_this.el, null);
-        Object.assign(_this.mirror.style, {
+      setTimeout(() => {
+        let styles = window.getComputedStyle(this.el, null);
+        Object.assign(this.mirror.style, {
           position: "absolute",
           top: "-9999px",
           left: "-9999px",
@@ -31,25 +29,21 @@ exports.install = function (Vue, options) {
           textTransform: styles.getPropertyValue("text-transform"),
           ariaHidden: true
         });
-        _this.check(_this.el);
-      }, 0);
+        this.check(this.el);
+      }, 0)
     },
-    update: function update() {
+    update(){
       this.check(this.el);
     },
-    check: function check(el) {
+    check(el){
       this.val = el.value;
       if (!this.val) this.val = el.placeholder || "";
       this.mirror.innerHTML = this.val.replace(/&/g, "&amp;").replace(/\s/g, "&nbsp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      var newWidth = this.mirror.getBoundingClientRect().width + this.options.comfortZone;
-      if (newWidth > this.options.maxWidth) {
-        newWidth = this.options.maxWidth;
-      } else if (newWidth < this.options.minWidth) {
-        newWidth = this.options.minWidth;
-      }
-      if (newWidth != el.getBoundingClientRect().width) {
-        el.style.width = newWidth + "px";
-      }
+      let newWidth = this.mirror.getBoundingClientRect().width + this.options.comfortZone;
+      if( newWidth > this.options.maxWidth ){ newWidth = this.options.maxWidth; }
+      else if (newWidth < this.options.minWidth){ newWidth = this.options.minWidth; }
+      if( newWidth != el.getBoundingClientRect().width ){ el.style.width = `${newWidth}px`; }
     }
   });
-};
+
+}

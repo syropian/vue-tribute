@@ -1,40 +1,21 @@
 <template>
-  <textarea @keyup="syncToEditor">{{ editorDisplayVal }}</textarea>
-  <prosemirror :content="editorVal" :on-change="editorChanged" menu-type="tooltip"></prosemirror>
+  <input type="text" v-input-autosize v-model="foo" placeholder="Butts" />
 </template>
 <script>
-  import VueProseMirror from "../";
+  import Vue from "vue";
+  import VueInputAutosize from "../";
+
+  Vue.use(VueInputAutosize);
+
   export default {
     name: "app",
-    data(){
-      return {
-        editorVal: "",
-        editorDisplayVal: ""
-      }
-    },
     ready(){
       console.log("Ready!")
     },
-    methods: {
-      editorChanged(raw, rendered){
-        this.editorDisplayVal = raw;
-        console.log(rendered)
-      },
-      syncToEditor($event){
-        this.editorVal = $event.target.value;
+    data(){
+      return {
+        foo: "Hello"
       }
-    },
-    components: {
-      prosemirror: VueProseMirror
     }
   }
 </script>
-<style>
-.vueProseMirror .ProseMirror .ProseMirror-content{
-  width: 500px;
-  margin: 50px auto;
-  border: 1px solid #eee;
-  outline: none;
-  padding: 10px;
-}
-</style>

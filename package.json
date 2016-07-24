@@ -1,9 +1,9 @@
 {
-  "name": "vue-prosemirror",
-  "version": "0.1.2",
-  "description": "A simple Vue.js wrapper around the ProseMirror editor",
+  "name": "vue-input-autosize",
+  "version": "0.1.0",
+  "description": "A simple Vue.js directive to autosize text input fields",
   "license": "MIT",
-  "repository": "syropian/vue-prosemirror",
+  "repository": "syropian/vue-input-autosize",
   "author": {
     "name": "Collin Henderson",
     "email": "collin@syropia.net",
@@ -13,9 +13,11 @@
     "node": ">=4"
   },
   "scripts": {
+    "build:all": "npm run build && npm run build:umd",
     "build": "BUILD_ENV=cjs rollup -c",
+    "build:umd": "BUILD_ENV=umd rollup -c",
     "example": "vbuild --dev -e example",
-    "example:build": "vbuild -e example -t VueProsemirror"
+    "example:build": "vbuild -e example -t VueInputAutosize"
   },
   "main": "index.js",
   "files": [
@@ -23,18 +25,16 @@
     "index.umd.js"
   ],
   "keywords": [
-    "prosemirror",
-    "editor",
-    "markdown",
+    "autosize",
+    "autogrow",
+    "autoshrink",
+    "input",
     "Vue"
   ],
-  "dependencies": {
-    "prosemirror": "^0.8.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.1.1",
     "rollup": "^0.33.0",
-    "rollup-plugin-babel": "^2.6.1",
-    "rollup-plugin-vue": "^2.0.1"
+    "rollup-plugin-babel": "^2.6.1"
   }
 }
