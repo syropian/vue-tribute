@@ -1,5 +1,5 @@
 <template>
-  <input type="text" v-input-autosize v-model="foo" placeholder="Butts" />
+  <input type="text" v-input-autosize v-model="foo" placeholder="A placeholder" />
 </template>
 <script>
   import Vue from "vue";
