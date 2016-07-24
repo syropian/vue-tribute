@@ -17,11 +17,6 @@ import VueInputAutosize from "vue-input-autosize";
 Vue.use(VueInputAutosize, { maxWidth: 500, minWidth: 20, comfortZone: 0 });
 ```
 
-## Development
+## License
 
-Coming soon...
-
-## TODO
-
-- [ ] Tests
-- [ ] Improve the example
+MIT © [Collin Henderson](https://github.com/syropian)
