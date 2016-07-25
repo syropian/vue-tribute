@@ -1,5 +1,7 @@
 # vue-input-autosize
 
+[![Build Status](https://travis-ci.org/syropian/vue-input-autosize.svg?branch=master)](https://travis-ci.org/syropian/vue-input-autosize)
+
 > A simple Vue.js directive for autosizing a text input based on its content.
 
 ## Install
