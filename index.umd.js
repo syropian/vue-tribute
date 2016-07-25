@@ -23,7 +23,6 @@
 
         this.mirror = document.createElement("span");
         this.mirror.classList.add("vue-input-autosize-mirror");
-        document.body.appendChild(this.mirror);
 
         this.el.addEventListener("input", this.check.bind(this, this.el), false);
         setTimeout(function () {
@@ -39,11 +38,12 @@
             fontWeight: styles.getPropertyValue("font-weight"),
             letterSpacing: styles.getPropertyValue("letter-spacing"),
             textTransform: styles.getPropertyValue("text-transform"),
-            ariaHidden: true
+            ariaHidden: true,
+            opacity: 0
           });
+          document.body.appendChild(_this.mirror);
           _this.check(_this.el);
         }, 0);
-        // this.vm.$watch()
       },
       update: function update(newVal, oldVal) {
         this.check(this.el);

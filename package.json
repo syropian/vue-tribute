@@ -16,8 +16,8 @@
     "build:all": "npm run build && npm run build:umd",
     "build": "BUILD_ENV=cjs rollup -c",
     "build:umd": "BUILD_ENV=umd rollup -c",
-    "example": "vbuild --dev -e example",
-    "example:build": "vbuild -e example -t VueInputAutosize",
+    "example": "vbuild --dev",
+    "example:build": "vbuild -t VueInputAutosize",
     "test": "karma start karma.conf.js --single-run true --auto-watch false",
     "watch-test": "karma start karma.conf.js --single-run false --auto-watch true"
   },

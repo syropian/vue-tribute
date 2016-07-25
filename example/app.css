@@ -1,0 +1,69 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+background: #6441A5; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #6441A5 , #2a0845); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #6441A5 , #2a0845); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.app {
+  background: rgba(255,255,255,0.02);
+  background-clip: padding-box;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  color: #fff;
+  margin: 50px auto;
+  padding: 20px;
+  width: 800px;
+}
+
+h2 {
+  margin-top: 0;
+  text-shadow: 0 -1px 0 #1f0037;
+}
+
+.textbox {
+  transition: box-shadow 250ms ease;
+  border-radius: 3px;
+  border: 1px solid #2b094c;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+  color: #666;
+  font-size: 18px;
+  height: 36px;
+  outline: none;
+  padding: 5px 10px;
+}
+.textbox:focus {
+  box-shadow: 0 0 16px 8px rgba(255,255,255,0.3);
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.buttons button {
+  transition: all 250ms ease;
+  appearance: none;
+  background: #4f2593;
+  border: 1px solid #2b094c;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 1px 2px rgba(0,0,0,0.2);
+  color: #fff;
+  cursor: pointer;;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin-right: 10px;
+  outline: none;
+  padding: 15px;
+  position: relative;
+  text-transform: uppercase;
+  text-shadow: 0 -1px 0 #1f0037;
+}
+.buttons button:hover {
+  background: #471f84;
+}
+.buttons button:active { top: 1px; }
