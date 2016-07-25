@@ -104,7 +104,7 @@ describe("vue-input-autosize", () => {
       template: "<input type='text' :value='msg' v-el:test v-input-autosize />",
       data(){
         return {
-          msg: "Hi"
+          msg: "a"
         }
       }
     });
