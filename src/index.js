@@ -2,9 +2,15 @@
 
 exports.install = function(Vue, options){
   Vue.directive("input-autosize", {
+    params: ["value"],
     mirror: null,
     val: " ",
     options: {},
+    paramWatchers: {
+      value(val, oldVal){
+        Vue.nextTick(this.check.bind(this, this.el));
+      }
+    },
     bind(){
       const defaults = { maxWidth: 500, minWidth: 20, comfortZone: 0 };
       this.options = Object.assign(defaults, options || {});
@@ -30,9 +36,10 @@ exports.install = function(Vue, options){
           ariaHidden: true
         });
         this.check(this.el);
-      }, 0)
+      }, 0);
+      // this.vm.$watch()
     },
-    update(){
+    update(newVal, oldVal){
       this.check(this.el);
     },
     check(el){

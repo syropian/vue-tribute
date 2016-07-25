@@ -19,7 +19,7 @@ Vue.use(VueInputAutosize, { maxWidth: 500, minWidth: 20, comfortZone: 0 });
 
 ...and inside your template:
 
-`<input type='text' v-model='msg' v-input-autosize />`
+`<input type='text' :value='msg' v-input-autosize />`
 
 ## License
 

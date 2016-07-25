@@ -4,7 +4,6 @@ import VueInputAutosize from "../src";
 Vue.use(VueInputAutosize);
 
 describe("vue-input-autosize", () => {
-
   it("has an install method for Vue.use()", () => {
     expect(typeof VueInputAutosize.install).toEqual("function");
   });
@@ -19,7 +18,7 @@ describe("vue-input-autosize", () => {
     const vm = new Vue({
       el: document.body,
       replace: false,
-      template: "<input type='text' v-model='msg' v-el:test v-input-autosize style='font-size:12px;' />",
+      template: "<input type='text' :value='msg' v-el:test v-input-autosize style='width:200px;' />",
       data(){
         return {
           msg: "Hello"
@@ -27,7 +26,7 @@ describe("vue-input-autosize", () => {
       }
     })
     setTimeout(function(){
-      expect( Math.round(parseInt(vm.$els.test.style.width, 10)) ).toEqual(26);
+      expect( parseInt(vm.$els.test.style.width, 10) ).toBeLessThan(200);
       done();
     }, 0);
   });
@@ -35,10 +34,10 @@ describe("vue-input-autosize", () => {
     const vm = new Vue({
       el: document.body,
       replace: false,
-      template: "<input type='text' placeholder='Hello' v-el:test v-input-autosize style='font-size:12px;' />",
+      template: "<input type='text' placeholder='Hello' v-el:test v-input-autosize style='width:200px;' />",
     })
     setTimeout(() => {
-      expect( Math.round(parseInt(vm.$els.test.style.width, 10)) ).toEqual(26);
+      expect( parseInt(vm.$els.test.style.width, 10) ).toBeLessThan(200);
       done();
     }, 0)
   });
@@ -46,41 +45,47 @@ describe("vue-input-autosize", () => {
     const vm = new Vue({
       el: document.body,
       replace: false,
-      template: "<input type='text' v-model='msg' v-el:test v-input-autosize style='font-size:12px;' />",
+      template: "<input type='text' :value='msg' v-el:test v-input-autosize />",
       data(){
         return {
           msg: "Hello"
         }
       }
     })
-    vm.msg = "Hello World";
     setTimeout(() => {
-      expect( Math.round(parseInt(vm.$els.test.style.width, 10)) ).toBeGreaterThan(26);
-      done();
+      const currentWidth = parseInt(vm.$els.test.style.width, 10);
+      vm.$set("msg", "Hello World");
+      setTimeout(() => {
+        expect( parseInt(vm.$els.test.style.width, 10) ).toBeGreaterThan(currentWidth);
+        done();
+      }, 0);
     }, 0);
   });
   it("decreases the width of the input when text is removed", (done) => {
     const vm = new Vue({
       el: document.body,
       replace: false,
-      template: "<input type='text' v-model='msg' v-el:test v-input-autosize style='font-size:12px;' />",
+      template: "<input type='text' :value='msg' v-el:test v-input-autosize />",
       data(){
         return {
-          msg: "Hello"
+          msg: "Hello World!"
         }
       }
-    });
-    vm.msg = "Hey!";
+    })
     setTimeout(() => {
-      expect( Math.round(parseInt(vm.$els.test.style.width, 10)) ).toBeLessThan(26);
-      done();
+      const currentWidth = parseInt(vm.$els.test.style.width, 10);
+      vm.$set("msg", "Hello");
+      setTimeout(() => {
+        expect( parseInt(vm.$els.test.style.width, 10) ).toBeLessThan(currentWidth);
+        done();
+      }, 0);
     }, 0);
   });
   it("clamps the input's width to the max width option", (done) => {
     const vm = new Vue({
       el: document.body,
       replace: false,
-      template: "<input type='text' v-model='msg' v-el:test v-input-autosize style='font-size:12px;' />",
+      template: "<input type='text' :value='msg' v-el:test v-input-autosize />",
       data(){
         return {
           msg: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -88,7 +93,7 @@ describe("vue-input-autosize", () => {
       }
     });
     setTimeout(() => {
-      expect( Math.round(parseInt(vm.$els.test.style.width, 10)) ).toEqual(500);
+      expect( parseInt(vm.$els.test.style.width, 10) ).toEqual(500);
       done();
     }, 0);
   });
@@ -96,7 +101,7 @@ describe("vue-input-autosize", () => {
     const vm = new Vue({
       el: document.body,
       replace: false,
-      template: "<input type='text' v-model='msg' v-el:test v-input-autosize style='font-size:12px;' />",
+      template: "<input type='text' :value='msg' v-el:test v-input-autosize />",
       data(){
         return {
           msg: "Hi"
@@ -104,7 +109,7 @@ describe("vue-input-autosize", () => {
       }
     });
     setTimeout(() => {
-      expect( Math.round(parseInt(vm.$els.test.style.width, 10)) ).toEqual(20);
+      expect( parseInt(vm.$els.test.style.width, 10) ).toEqual(20);
       done();
     }, 0);
   });

@@ -2,9 +2,15 @@
 
 exports.install = function (Vue, options) {
   Vue.directive("input-autosize", {
+    params: ["value"],
     mirror: null,
     val: " ",
     options: {},
+    paramWatchers: {
+      value: function value(val, oldVal) {
+        Vue.nextTick(this.check.bind(this, this.el));
+      }
+    },
     bind: function bind() {
       var _this = this;
 
@@ -33,8 +39,9 @@ exports.install = function (Vue, options) {
         });
         _this.check(_this.el);
       }, 0);
+      // this.vm.$watch()
     },
-    update: function update() {
+    update: function update(newVal, oldVal) {
       this.check(this.el);
     },
     check: function check(el) {
