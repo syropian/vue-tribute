@@ -33,13 +33,15 @@
             left: "-9999px",
             width: "auto",
             whiteSpace: "nowrap",
+            opacity: 0,
+            border: styles.getPropertyValue("border"),
             fontSize: styles.getPropertyValue("font-size"),
             fontFamily: styles.getPropertyValue("font-family"),
             fontWeight: styles.getPropertyValue("font-weight"),
             letterSpacing: styles.getPropertyValue("letter-spacing"),
+            padding: styles.getPropertyValue("padding"),
             textTransform: styles.getPropertyValue("text-transform"),
-            ariaHidden: true,
-            opacity: 0
+            ariaHidden: true
           });
           document.body.appendChild(_this.mirror);
           _this.check(_this.el);

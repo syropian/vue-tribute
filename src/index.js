@@ -24,10 +24,11 @@ exports.install = function(Vue, options){
         let styles = window.getComputedStyle(this.el, null);
         Object.assign(this.mirror.style, {
           position: "absolute",
-          top: "0",
-          left: "0",
+          top: "-9999px",
+          left: "-9999px",
           width: "auto",
           whiteSpace: "nowrap",
+          opacity: 0,
           border: styles.getPropertyValue("border"),
           fontSize: styles.getPropertyValue("font-size"),
           fontFamily: styles.getPropertyValue("font-family"),
@@ -35,8 +36,7 @@ exports.install = function(Vue, options){
           letterSpacing: styles.getPropertyValue("letter-spacing"),
           padding: styles.getPropertyValue("padding"),
           textTransform: styles.getPropertyValue("text-transform"),
-          ariaHidden: true,
-          opacity: 0
+          ariaHidden: true
         });
         document.body.appendChild(this.mirror);
         this.check(this.el);
