@@ -1,6 +1,6 @@
 {
   "name": "vue-input-autosize",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A simple Vue.js directive to autosize text input fields",
   "license": "MIT",
   "repository": "syropian/vue-input-autosize",
