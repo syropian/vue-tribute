@@ -43,6 +43,10 @@ The `values` array should be an array of objects that contain a key and value li
 
 You can modify this structure using the built-in [Tribute options](https://github.com/zurb/tribute#a-collection).
 
+## Events
+
+Tribute broadcasts two events — a `tribute-replaced` event, and a `tribute-no-match` event (see docs [here](https://github.com/zurb/tribute#replace-event)). For your convenience, whenever Tribute triggers these events, vue-tribute also emits these events from the Vue instance the bound element is attached to. 
+
 ## License
 
 MIT © [Collin Henderson](https://github.com/syropian)
