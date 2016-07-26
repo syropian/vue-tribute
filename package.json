@@ -1,9 +1,9 @@
 {
-  "name": "vue-input-autosize",
-  "version": "0.2.2",
-  "description": "A simple Vue.js directive to autosize text input fields",
+  "name": "vue-tribute",
+  "version": "0.1.0",
+  "description": "A Vue.js wrapper for Zurb's Tribute library for native @mentions",
   "license": "MIT",
-  "repository": "syropian/vue-input-autosize",
+  "repository": "syropian/vue-tribute",
   "author": {
     "name": "Collin Henderson",
     "email": "collin@syropia.net",
@@ -17,7 +17,7 @@
     "build": "BUILD_ENV=cjs rollup -c",
     "build:umd": "BUILD_ENV=umd rollup -c",
     "example": "vbuild --dev",
-    "example:build": "vbuild -t VueInputAutosize",
+    "example:build": "vbuild -t VueTribute",
     "test": "karma start karma.conf.js --single-run true --auto-watch false",
     "watch-test": "karma start karma.conf.js --single-run false --auto-watch true"
   },
@@ -27,14 +27,14 @@
     "index.umd.js"
   ],
   "keywords": [
-    "autosize",
-    "autogrow",
-    "autoshrink",
+    "tribute",
+    "mention",
     "input",
     "Vue"
   ],
   "dependencies": {},
   "devDependencies": {
+    "aliasify": "^2.0.0",
     "babel-core": "^6.11.4",
     "babel-plugin-transform-runtime": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",

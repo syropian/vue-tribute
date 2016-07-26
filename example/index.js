@@ -1,7 +1,7 @@
 import Vue from "vue"
-import VueInputAutosize from "../"
+import VueTribute from "../"
 
-Vue.use(VueInputAutosize, { maxWidth: 500, minWidth: 20, comfortZone: 0 });
+Vue.use(VueTribute);
 
 Vue.config.debug = true
 
@@ -10,24 +10,27 @@ new Vue({
   replace: false,
   data(){
     return {
-      msg: "Hello World!"
+      items: [
+        {key: "Phil Heartman", value: "pheartman"},
+        {key: "Gordon Ramsey", value: "gramsey"}
+      ]
     }
   },
   methods: {
-    setNewText(){
-      this.msg = "This is some new text for you!";
-    },
-    clearText(){
-      this.msg = "";
+    replaceItems(){
+      this.items = [
+        {key: "Collin Henderson", value: "syropian"},
+        {key: "Amanda Glover", value: "glovelyyy"},
+        {key: "Daniel Hritzkiv", value: "dhritzkiv"},
+      ];
     }
   },
   template: `
   <div class="app">
-    <h2>vue-input-autosize</h2>
-    <input type='text' :value="msg" v-input-autosize placeholder="Enter text" class="textbox" />
+    <h2>vue-tribute</h2>
+    <input type="text" :values="items" placeholder="Enter text" class="textbox" v-tribute />
     <div class="buttons">
-      <button @click="setNewText">Set New Text</button>
-      <button @click="clearText">Clear Text</button>
+      <button @click="replaceItems">Replace Items</button>
     </div>
   </div>
   `

@@ -1,63 +1,55 @@
 'use strict';
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var Tribute = _interopDefault(require('tributejs'));
+
+if (!Tribute) {
+  throw new Error("[vue-tribute] cannot locate tributejs");
+}
+
 exports.install = function (Vue, options) {
-  Vue.directive("input-autosize", {
-    params: ["value"],
-    mirror: null,
-    val: " ",
-    options: {},
+  Vue.directive("tribute", {
+    params: ["values"],
+    tribute: null,
     paramWatchers: {
-      value: function value(val, oldVal) {
-        Vue.nextTick(this.check.bind(this, this.el));
+      values: function values(val, oldVal) {
+        var _this = this;
+
+        setTimeout(function () {
+          _this.setValues(val);
+        }, 0);
       }
     },
     bind: function bind() {
-      var _this = this;
+      var _this2 = this;
 
-      var defaults = { maxWidth: 500, minWidth: 20, comfortZone: 0 };
-      this.options = Object.assign(defaults, options || {});
-
-      this.mirror = document.createElement("span");
-      this.mirror.classList.add("vue-input-autosize-mirror");
-
-      this.el.addEventListener("input", this.check.bind(this, this.el), false);
-      setTimeout(function () {
-        var styles = window.getComputedStyle(_this.el, null);
-        Object.assign(_this.mirror.style, {
-          position: "absolute",
-          top: "-9999px",
-          left: "-9999px",
-          width: "auto",
-          whiteSpace: "nowrap",
-          opacity: 0,
-          border: styles.getPropertyValue("border"),
-          fontSize: styles.getPropertyValue("font-size"),
-          fontFamily: styles.getPropertyValue("font-family"),
-          fontWeight: styles.getPropertyValue("font-weight"),
-          letterSpacing: styles.getPropertyValue("letter-spacing"),
-          padding: styles.getPropertyValue("padding"),
-          textTransform: styles.getPropertyValue("text-transform"),
-          ariaHidden: true
+      // If it has a "values" property, it's actually a collection
+      if (this.params.values.hasOwnProperty("values")) {
+        this.tribute = new Tribute({
+          collection: this.params.values
         });
-        document.body.appendChild(_this.mirror);
-        _this.check(_this.el);
-      }, 0);
-    },
-    update: function update(newVal, oldVal) {
-      this.check(this.el);
-    },
-    check: function check(el) {
-      this.val = el.value;
-      if (!this.val) this.val = el.placeholder || "";
-      this.mirror.innerHTML = this.val.replace(/&/g, "&amp;").replace(/\s/g, "&nbsp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      var newWidth = this.mirror.getBoundingClientRect().width + this.options.comfortZone;
-      if (newWidth > this.options.maxWidth) {
-        newWidth = this.options.maxWidth;
-      } else if (newWidth < this.options.minWidth) {
-        newWidth = this.options.minWidth;
+      } else {
+        this.tribute = new Tribute({
+          values: this.params.values,
+          options: options
+        });
       }
-      if (newWidth != el.getBoundingClientRect().width) {
-        el.style.width = newWidth + "px";
+
+      this.tribute.attach(this.el);
+      this.el.addEventListener("tribute-replaced", function (e) {
+        _this2.vm.$emit("tribute-replaced");
+      });
+      this.el.addEventListener("tribute-no-match", function (e) {
+        _this2.vm.$emit("tribute-no-match");
+      });
+    },
+    setValues: function setValues(values) {
+      // If it has a "values" property, it's actually a collection
+      if (values.hasOwnProperty("values")) {
+        this.tribute.collection = values;
+      } else {
+        this.tribute.collection[0].values = values;
       }
     }
   });

@@ -1,58 +1,50 @@
-"use strict";
+import Tribute from "tributejs";
+
+if(!Tribute){
+  throw new Error("[vue-tribute] cannot locate tributejs")
+}
 
 exports.install = function(Vue, options){
-  Vue.directive("input-autosize", {
-    params: ["value"],
-    mirror: null,
-    val: " ",
-    options: {},
+  Vue.directive("tribute", {
+    params: ["values"],
+    tribute: null,
     paramWatchers: {
-      value(val, oldVal){
-        Vue.nextTick(this.check.bind(this, this.el));
+      values(val, oldVal){
+        setTimeout(() => {
+          this.setValues(val);
+        }, 0)
       }
     },
     bind(){
-      const defaults = { maxWidth: 500, minWidth: 20, comfortZone: 0 };
-      this.options = Object.assign(defaults, options || {});
-
-      this.mirror = document.createElement("span");
-      this.mirror.classList.add("vue-input-autosize-mirror");
-
-
-      this.el.addEventListener("input", this.check.bind(this, this.el), false);
-      setTimeout(() => {
-        let styles = window.getComputedStyle(this.el, null);
-        Object.assign(this.mirror.style, {
-          position: "absolute",
-          top: "-9999px",
-          left: "-9999px",
-          width: "auto",
-          whiteSpace: "nowrap",
-          opacity: 0,
-          border: styles.getPropertyValue("border"),
-          fontSize: styles.getPropertyValue("font-size"),
-          fontFamily: styles.getPropertyValue("font-family"),
-          fontWeight: styles.getPropertyValue("font-weight"),
-          letterSpacing: styles.getPropertyValue("letter-spacing"),
-          padding: styles.getPropertyValue("padding"),
-          textTransform: styles.getPropertyValue("text-transform"),
-          ariaHidden: true
+      // If it has a "values" property, it's actually a collection
+      if( this.params.values.hasOwnProperty("values") ){
+        this.tribute = new Tribute({
+          collection: this.params.values,
         });
-        document.body.appendChild(this.mirror);
-        this.check(this.el);
-      }, 0);
+      }
+      else {
+        this.tribute = new Tribute({
+          values: this.params.values,
+          options
+        });
+      }
+
+      this.tribute.attach(this.el);
+      this.el.addEventListener("tribute-replaced", (e) => {
+        this.vm.$emit("tribute-replaced");
+      });
+      this.el.addEventListener("tribute-no-match", (e) => {
+        this.vm.$emit("tribute-no-match");
+      });
     },
-    update(newVal, oldVal){
-      this.check(this.el);
-    },
-    check(el){
-      this.val = el.value;
-      if (!this.val) this.val = el.placeholder || "";
-      this.mirror.innerHTML = this.val.replace(/&/g, "&amp;").replace(/\s/g, "&nbsp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      let newWidth = this.mirror.getBoundingClientRect().width + this.options.comfortZone;
-      if( newWidth > this.options.maxWidth ){ newWidth = this.options.maxWidth; }
-      else if (newWidth < this.options.minWidth){ newWidth = this.options.minWidth; }
-      if( newWidth != el.getBoundingClientRect().width ){ el.style.width = `${newWidth}px`; }
+    setValues(values){
+      // If it has a "values" property, it's actually a collection
+      if( values.hasOwnProperty("values") ){
+        this.tribute.collection = values;
+      }
+      else {
+        this.tribute.collection[0].values = values;
+      }
     }
   });
 

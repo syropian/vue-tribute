@@ -12,10 +12,13 @@ module.exports = function(config) {
     browsers: ["PhantomJS"],
     reporters: ["spec"],
     browserify: {
-      transform: [["babelify", {
-        presets: ["es2015"],
-        plugins: ["transform-runtime"]
-      }]],
+      transform: [
+        ["babelify", {
+          presets: ["es2015"],
+          plugins: ["transform-runtime"]
+        }],
+        ["aliasify", { aliases: { "tributejs": "./node_modules/tributejs/dist/tribute.min.js"} }]
+      ]
     }
   });
 }
