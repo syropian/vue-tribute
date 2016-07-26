@@ -45,7 +45,7 @@ You can modify this structure using the built-in [Tribute options](https://githu
 
 ## Events
 
-Tribute broadcasts two events — a `tribute-replaced` event, and a `tribute-no-match` event (see docs [here](https://github.com/zurb/tribute#replace-event)). For your convenience, whenever Tribute triggers these events, vue-tribute also emits these events from the Vue instance the bound element is attached to. 
+Tribute broadcasts two events — a `tribute-replaced` event, and a `tribute-no-match` event (see docs [here](https://github.com/zurb/tribute#replace-event)). For your convenience, whenever Tribute triggers these events, vue-tribute also [emits](http://vuejs.org/api/#vm-emit) these events from the Vue instance the bound element is attached to. 
 
 ## License
 
