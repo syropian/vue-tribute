@@ -32,10 +32,9 @@
             collection: this.params.values
           });
         } else {
-          this.tribute = new Tribute({
-            values: this.params.values,
-            options: options
-          });
+          this.tribute = new Tribute(Object.assign({
+            values: this.params.values
+          }, options));
         }
 
         this.tribute.attach(this.el);
