@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/syropian/vue-tribute.svg?branch=master)](https://travis-ci.org/syropian/vue-tribute)
 
-> A Vue.js wrapper for Zurb's Tribute library for native @mentions.
+> A Vue.js wrapper for Zurb's [Tribute](https://github.com/zurb/tribute) library for native @mentions.
 
 ## Install
 
