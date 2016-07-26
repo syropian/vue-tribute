@@ -1,6 +1,6 @@
 {
   "name": "vue-tribute",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Vue.js wrapper for Zurb's Tribute library for native @mentions",
   "license": "MIT",
   "repository": "syropian/vue-tribute",
