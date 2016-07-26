@@ -1,36 +1,47 @@
-# vue-input-autosize
+# vue-tribute
 
-[![Build Status](https://travis-ci.org/syropian/vue-input-autosize.svg?branch=master)](https://travis-ci.org/syropian/vue-input-autosize)
+[![Build Status](https://travis-ci.org/syropian/vue-tribute.svg?branch=master)](https://travis-ci.org/syropian/vue-tribute)
 
-> A simple Vue.js directive for autosizing a text input based on its content.
+> A Vue.js wrapper for Zurb's Tribute library for native @mentions.
 
 ## Install
 
 ```js
-$ npm install vue-input-autosize --save
+$ npm install vue-tribute --save
 ```
 
-**or** include the UMD build, hosted by [npmcdn](https://npmcdn.com) in a `<script>` tag:
+**or** include the UMD build, hosted by [npmcdn](https://npmcdn.com) in a `<script>` tag. You will also need to include the main Zurb Tribute library:
 
 ```js
-<script src="//npmcdn.com/vue-input-autosize"></script>
+<script src="js/tribute.js"></script>
+<script src="//npmcdn.com/vue-tribute"></script>
 ```
 
 ## Usage
 
 ```js
 import Vue from "vue";
-import VueInputAutosize from "vue-input-autosize";
+import VueTribute from "vue-tribute";
 
-Vue.use(VueInputAutosize, { maxWidth: 500, minWidth: 20, comfortZone: 0 });
+Vue.use(VueTribute, options);
 ```
 
-...and inside your template:
+> The `options` parameter is optional.
 
-`<input type='text' :value='msg' v-input-autosize />`
+...and inside your template, bind a dynamic `values` parameter to some data:
 
-### Why bind to `value` instead of using `v-model`?
-Currently, there's no easy way to track changes to a `v-model` value from a directive. However, since the `value` property of a text field controls its content, and is also a valid parameter to watch for updates from the directive, we can dynamically bind to that instead.
+`<input type='text' :values='items' v-tribute />`
+
+The `values` array should be an array of objects that contain a key and value like so:
+
+```
+[
+  {key: "Phil Heartman", value: "pheartman"},
+  {key: "Gordon Ramsey", value: "gramsey"}
+]
+```
+
+You can modify this structure using the built-in [Tribute options](https://github.com/zurb/tribute#a-collection).
 
 ## License
 
