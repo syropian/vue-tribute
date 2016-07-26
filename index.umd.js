@@ -16,15 +16,11 @@
       tribute: null,
       paramWatchers: {
         values: function values(val, oldVal) {
-          var _this = this;
-
-          setTimeout(function () {
-            _this.setValues(val);
-          }, 0);
+          this.setValues(val);
         }
       },
       bind: function bind() {
-        var _this2 = this;
+        var _this = this;
 
         // If it has a "values" property, it's actually a collection
         if (this.params.values.hasOwnProperty("values")) {
@@ -39,10 +35,10 @@
 
         this.tribute.attach(this.el);
         this.el.addEventListener("tribute-replaced", function (e) {
-          _this2.vm.$emit("tribute-replaced");
+          _this.vm.$emit("tribute-replaced");
         });
         this.el.addEventListener("tribute-no-match", function (e) {
-          _this2.vm.$emit("tribute-no-match");
+          _this.vm.$emit("tribute-no-match");
         });
       },
       setValues: function setValues(values) {

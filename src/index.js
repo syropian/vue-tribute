@@ -10,9 +10,7 @@ exports.install = function (Vue, options) {
     tribute: null,
     paramWatchers: {
       values (val, oldVal) {
-        setTimeout(() => {
-          this.setValues(val)
-        }, 0)
+        this.setValues(val)
       }
     },
     bind () {
