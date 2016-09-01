@@ -10,11 +10,11 @@
 $ npm install vue-tribute --save
 ```
 
-**or** include the UMD build, hosted by [npmcdn](https://npmcdn.com) in a `<script>` tag. You will also need to include the main Zurb Tribute library:
+**or** include the UMD build, hosted by [unpkg](https://unpkg.com) in a `<script>` tag. You will also need to include the main Zurb Tribute library:
 
 ```js
 <script src="js/tribute.js"></script>
-<script src="//npmcdn.com/vue-tribute"></script>
+<script src="//unpkg.com/vue-tribute"></script>
 ```
 
 ## Usage
