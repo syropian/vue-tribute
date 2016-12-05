@@ -10,44 +10,34 @@
     throw new Error("[vue-tribute] cannot locate tributejs");
   }
 
-  exports.install = function (Vue, options) {
+  exports.install = function (Vue, globalOptions) {
     Vue.directive("tribute", {
-      params: ["values"],
+      params: ["tributeoptions"],
+
       tribute: null,
-      paramWatchers: {
-        values: function values(val, oldVal) {
-          this.setValues(val);
-        }
-      },
+
+      /** Create a Tribute instance for this element */
       bind: function bind() {
         var _this = this;
 
-        // If it has a "values" property, it's actually a collection
-        if (this.params.values.hasOwnProperty("values")) {
-          this.tribute = new Tribute({
-            collection: this.params.values
-          });
-        } else {
-          this.tribute = new Tribute(Object.assign({
-            values: this.params.values
-          }, options));
-        }
+        this.tribute = new Tribute(Object.assign({
+          values: []
+        }, globalOptions, this.params.tributeoptions));
 
         this.tribute.attach(this.el);
+
         this.el.addEventListener("tribute-replaced", function (e) {
-          _this.vm.$emit("tribute-replaced");
+          _this.vm.$emit("tribute-replaced", e);
         });
         this.el.addEventListener("tribute-no-match", function (e) {
-          _this.vm.$emit("tribute-no-match");
+          _this.vm.$emit("tribute-no-match", e);
         });
       },
-      setValues: function setValues(values) {
-        // If it has a "values" property, it's actually a collection
-        if (values.hasOwnProperty("values")) {
-          this.tribute.collection = values;
-        } else {
-          this.tribute.collection[0].values = values;
-        }
+
+
+      /** Set the initial or updated items */
+      update: function update(values) {
+        this.tribute.append(0, values, /* replace= */true);
       }
     });
   };
