@@ -7,7 +7,10 @@ beforeEach(() => {
   vm = new Vue({
     el: document.body,
     replace: false,
-    template: "<input type='text' :values='items' v-tribute />",
+    template: `<input type='text'
+      v-tribute='items'
+      :tributeoptions='{trigger: "#"}'
+    />`,
     data(){
       return {
         items: [
@@ -27,8 +30,14 @@ describe("vue-tribute", () => {
     expect(typeof vm.$options.directives["tribute"]).toEqual("object")
   })
 
-  it("triggers the param watcher when the underlying model changes", (done) => {
-    spyOn(vm.$options.directives["tribute"].paramWatchers, "values").and.callThrough()
+  it("supports tribute options", () => {
+    expect(vm._directives[0].tribute.collection[0].trigger).toEqual("#")
+  })
+
+  it("updates the items when the underlying model changes", (done) => {
+
+    const directive = vm._directives[0]
+    expect(directive.tribute.collection[0].values).toEqual(vm.items)
 
     const newItems = [
       {key: "Kerem Suer", value: "kerem"},
@@ -36,9 +45,9 @@ describe("vue-tribute", () => {
     ]
     vm.$set("items", newItems)
 
-    setTimeout(() => {
-      expect(vm.$options.directives["tribute"].paramWatchers.values).toHaveBeenCalled()
+    Vue.nextTick(() => {
+      expect(directive.tribute.collection[0].values).toEqual(newItems)
       done()
-    }, 0)
+    })
   })
 })

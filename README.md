@@ -23,25 +23,35 @@ $ npm install vue-tribute --save
 import Vue from "vue";
 import VueTribute from "vue-tribute";
 
-Vue.use(VueTribute, options);
+Vue.use(VueTribute, globalOptions);
 ```
 
-> The `options` parameter is optional.
+> The `globalOptions` parameter is optional.
 
 ...and inside your template, bind a dynamic `values` parameter to some data:
 
-`<input type='text' :values='items' v-tribute />`
-
-The `values` array should be an array of objects that contain a key and value like so:
-
 ```
-[
-  {key: "Phil Heartman", value: "pheartman"},
-  {key: "Gordon Ramsey", value: "gramsey"}
-]
+<input type='text'
+    v-tribute='tributeUsers'
+    :tributeoptions='{ trigger:"#" }' />
 ```
 
-You can modify this structure using the built-in [Tribute options](https://github.com/zurb/tribute#a-collection).
+The value of `v-tribute` should be an array of objects that contain a `key` to search and a `value` to be inserted. We recommend using a Vue computed property to format your data like so:
+
+```
+computed: {
+  tributeUsers: function() {
+    return [
+      {key: "Phil Heartman", value: "pheartman"},
+      {key: "Gordon Ramsey", value: "gramsey"}
+    ]
+  },
+},
+```
+
+The `tributeoptions` attribute is optional. It is merged with `globalOptions` and takes precendence.
+
+See the available options [here](https://github.com/zurb/tribute#a-collection).
 
 ## Events
 
@@ -49,4 +59,4 @@ Tribute broadcasts two events — a `tribute-replaced` event, and a `tribute-no-
 
 ## License
 
-MIT © [Collin Henderson](https://github.com/syropian)
+MIT © [Collin Henderson](https://github.com/syropian), [Aurélien Nicolas](https://github.com/deckardai)
