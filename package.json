@@ -15,7 +15,7 @@
     "test": "jest",
     "watch-test": "jest --watchAll",
     "example": "poi example/index.js",
-    "example:build": "poi build",
+    "example:build": "rm -rf example/dist && poi build",
     "example:deploy": "git subtree push --prefix example/dist origin gh-pages",
     "version": "npm run example:deploy"
   },
