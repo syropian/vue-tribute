@@ -1,12 +1,13 @@
 {
   "name": "vue-tribute",
   "version": "1.0.1",
-  "description":
-    "A Vue.js wrapper for Zurb's Tribute library for native @mentions",
+  "description": "A Vue.js wrapper for Zurb's Tribute library for native @mentions",
   "main": "dist/vue-tribute.cjs.js",
   "module": "dist/vue-tribute.es.js",
   "unpkg": "dist/vue-tribute.min.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": "https://github.com/syropian/vue-tribute",
   "author": "Collin Henderson <collin@syropia.net>",
   "license": "MIT",
@@ -15,9 +16,13 @@
     "test": "jest",
     "watch-test": "jest --watchAll",
     "example": "poi example/index.js",
-    "example:build": "rm -rf example/dist && poi build",
+    "example:build": "poi build",
     "example:deploy": "git subtree push --prefix example/dist origin gh-pages",
     "version": "npm run example:deploy"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
   },
   "poi": {
     "entry": "example/index.js",
@@ -25,7 +30,12 @@
     "publicPath": "/vue-tribute/"
   },
   "bili": {
-    "format": ["cjs", "umd", "umd-min", "es"],
+    "format": [
+      "cjs",
+      "umd",
+      "umd-min",
+      "es"
+    ],
     "moduleName": "VueTribute"
   },
   "devDependencies": {

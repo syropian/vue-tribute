@@ -17,7 +17,7 @@ describe('VueTribute', () => {
       },
       propsData: testData
     })
-    expect(wrapper.name()).toBe('vue-tribute')
+    expect(wrapper.name()).toEqual('vue-tribute')
   })
 
   it('accepts an options prop', () => {
@@ -28,7 +28,33 @@ describe('VueTribute', () => {
       propsData: testData
     })
 
-    expect(wrapper.props()).toBe(testData)
+    expect(wrapper.props()).toEqual(testData)
+  })
+
+  it('updates property=values inside an options prop', () => {
+    let initialProps = {
+      options: {
+        values: [
+          { key: 'nothing', value: 'nothing' }
+        ]
+      }
+    }
+    const wrapper = mount(VueTribute, {
+      slots: {
+        default: '<input type="text" placeholder="Testo" />'
+      },
+      propsData: initialProps
+    })
+
+    expect(wrapper.props()).toEqual(initialProps)
+    wrapper.setProps(testData)
+    const $input = wrapper.find('input[type=text]')
+    $input.element.value = '@'
+    let evt = new Event('change')
+    $input.element.dispatchEvent(evt)
+    setTimeout(()=>{
+      expect(document.querySelector('.tribute-container > ul').childNodes.length).toBe(2)
+    }, 2000)
   })
 
   it('fires an event when there are no matches', () => {

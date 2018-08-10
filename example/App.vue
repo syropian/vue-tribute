@@ -17,6 +17,7 @@
     </vue-tribute>
     <br />
     <button @click="append" class="btn">Append New Item</button>
+    <button @click="updateOptions" class="btn">Update Whole Options</button>
   </div>
 </template>
 <script>
@@ -46,6 +47,13 @@ export default {
         key: kv,
         value: kv
       })
+    },
+    updateOptions() {
+      this.options = {
+        values: [
+          { key: 'nothing', value: 'nothing' }
+        ]
+      }
     }
   }
 }
