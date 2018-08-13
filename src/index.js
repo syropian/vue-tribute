@@ -20,10 +20,10 @@ const VueTribute = {
   watch: {
     options: {
       handler: function (newVal) {
-        this.$nextTick(()=>{ // recreate the tribute instance for newest options
+        this.$nextTick(() => { // recreate the tribute instance for the newest options
           const $el = this.$slots.default[0].elm
           if(this.tribute instanceof Tribute) {
-            if (!this.tribute.menu) { // if menu doesn't exists, tribute.detach will popup one error
+            if (!this.tribute.menu) { // if tribute.menu doesn't exists, tribute.detach will popup one error.
               this.tribute.menu = this.tribute.createMenu()
               $el.tributeMenu = this.tribute.menu
             }

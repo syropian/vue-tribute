@@ -52,7 +52,7 @@ describe('VueTribute', () => {
     $input.element.value = '@'
     let evt = new Event('change')
     $input.element.dispatchEvent(evt)
-    setTimeout(()=>{
+    setTimeout(() => {
       expect(document.querySelector('.tribute-container > ul').childNodes.length).toBe(2)
     }, 2000)
   })
