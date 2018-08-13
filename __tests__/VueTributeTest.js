@@ -17,7 +17,7 @@ describe('VueTribute', () => {
       },
       propsData: testData
     })
-    expect(wrapper.name()).toEqual('vue-tribute')
+    expect(wrapper.name()).toBe('vue-tribute')
   })
 
   it('accepts an options prop', () => {
