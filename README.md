@@ -51,7 +51,26 @@ See the available Tribute options [here](https://github.com/zurb/tribute#a-colle
 
 ## Events
 
-Tribute broadcasts two events — a `tribute-replaced` event, and a `tribute-no-match` event (see docs [here](https://github.com/zurb/tribute#replace-event)). For your convenience, whenever Tribute triggers these events, the vue-tribute component also [emits](http://vuejs.org/api/#vm-emit) these events.
+Tribute broadcasts two events — a `tribute-replaced` event, and a `tribute-no-match` event (see docs [here](https://github.com/zurb/tribute#replace-event)). Listeners for these events can be attached directly to the child element of the `<vue-tribute>` component. Eg:
+
+```html
+<vue-tribute :options="options">
+  <input type="text" placeholder="@..." @tribute-no-match="noMatchFound" />
+</vue-tribute>
+```
+
+## Development
+
+```bash
+# To run the example
+$ npm run example
+
+# To run the tests
+$ npm test
+
+# To publish the dist file
+$ npm run build
+```
 
 ## License
 
