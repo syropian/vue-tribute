@@ -1,19 +1,20 @@
 {
   "name": "vue-tribute",
   "version": "1.0.1",
-  "description":
-    "A Vue.js wrapper for Zurb's Tribute library for native @mentions",
+  "description": "A Vue.js wrapper for Zurb's Tribute library for native @mentions",
   "main": "dist/vue-tribute.cjs.js",
   "module": "dist/vue-tribute.es.js",
   "unpkg": "dist/vue-tribute.min.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": "https://github.com/syropian/vue-tribute",
   "author": "Collin Henderson <collin@syropia.net>",
   "license": "MIT",
   "scripts": {
     "build": "bili",
     "test": "jest",
-    "watch-test": "jest --watchAll",
+    "test:watch": "jest --watchAll",
     "example": "poi example/index.js",
     "example:build": "rm -rf example/dist && poi build",
     "example:deploy": "git subtree push --prefix example/dist origin gh-pages",
@@ -25,17 +26,21 @@
     "publicPath": "/vue-tribute/"
   },
   "bili": {
-    "format": ["cjs", "umd", "umd-min", "es"],
+    "format": [
+      "cjs",
+      "umd",
+      "umd-min",
+      "es"
+    ],
     "moduleName": "VueTribute"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.42",
-    "@vue/test-utils": "^1.0.0-beta.12",
-    "babel-core": "^7.0.0-0",
-    "babel-jest": "^22.4.3",
-    "babel-preset-env": "^1.6.1",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-jest": "^24.0.0",
     "bili": "^3.0.4",
-    "jest": "^22.4.2",
+    "jest": "^24.0.0",
     "node-sass": "^4.8.3",
     "poi": "^10.0.0-beta.6",
     "sass-loader": "^6.0.7",

@@ -3,24 +3,35 @@
     <h1>vue-tribute Demo</h1>
     <h3>Simple text input</h3>
     <vue-tribute :options="options">
-      <input type="text" placeholder="@...">
+      <input
+        type="text"
+        placeholder="@..."
+        @tribute-no-match="noMatchFound"
+      >
     </vue-tribute>
-    <br />
+    <br>
     <h3>Textarea</h3>
     <vue-tribute :options="options">
       <textarea placeholder="@..."></textarea>
     </vue-tribute>
-    <br />
+    <br>
     <h3>contenteditable element</h3>
     <vue-tribute :options="options">
-      <div class="content-editable" contenteditable="true" placeholder="@..."></div>
+      <div
+        class="content-editable"
+        contenteditable="true"
+        placeholder="@..."
+      ></div>
     </vue-tribute>
-    <br />
-    <button @click="append" class="btn">Append New Item</button>
+    <br>
+    <button
+      @click="append"
+      class="btn"
+    >Append New Item</button>
   </div>
 </template>
 <script>
-import VueTribute from '../src'
+import VueTribute from "../src";
 export default {
   components: {
     VueTribute
@@ -28,27 +39,31 @@ export default {
   data() {
     return {
       options: {
+        trigger: "@",
         values: [
-          { key: 'Collin Henderson', value: 'syropian' },
-          { key: 'Sarah Drasner', value: 'sarah_edo' },
-          { key: 'Evan You', value: 'youyuxi' },
-          { key: 'Adam Wathan', value: 'adamwathan' }
+          { key: "Collin Henderson", value: "syropian" },
+          { key: "Sarah Drasner", value: "sarah_edo" },
+          { key: "Evan You", value: "youyuxi" },
+          { key: "Adam Wathan", value: "adamwathan" }
         ]
       }
-    }
+    };
   },
   methods: {
+    noMatchFound() {
+      console.log("No matches found!");
+    },
     append() {
       let kv = Math.random()
         .toString(36)
-        .slice(2)
+        .slice(2);
       this.options.values.push({
         key: kv,
         value: kv
-      })
+      });
     }
   }
-}
+};
 </script>
 <style lang="scss">
 * {
@@ -66,6 +81,12 @@ body {
   justify-content: center;
   color: #fff;
   font-family: 'Helvetica Neue', 'Arial', sans-serif;
+}
+.scroll {
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  position: relative;
 }
 .container {
   max-width: 500px;
