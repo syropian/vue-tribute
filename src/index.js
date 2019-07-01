@@ -8,6 +8,23 @@ const VueTribute = {
       required: true
     }
   },
+  watch: {
+    options: {
+      immediate: false,
+      deep: true,
+      handler() {
+        const $el = this.$slots.default[0].elm
+        if (this.tribute) {
+          this.tribute.detach($el)
+          setTimeout(() => {
+            this.tribute = new Tribute(this.options)
+            this.tribute.attach($el)
+            $el.tributeInstance = this.tribute
+          }, 0)
+        }
+      }
+    }
+  },
   mounted() {
     if (typeof Tribute === "undefined") {
       throw new Error("[vue-tribute] cannot locate tributejs!")
@@ -18,6 +35,8 @@ const VueTribute = {
     this.tribute = new Tribute(this.options)
 
     this.tribute.attach($el)
+
+    $el.tributeInstance = this.tribute
   },
   beforeDestroy() {
     const $el = this.$slots.default[0].elm

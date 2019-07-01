@@ -7,6 +7,7 @@
         type="text"
         placeholder="@..."
         @tribute-no-match="noMatchFound"
+        ref="foo"
       >
     </vue-tribute>
     <br>
@@ -45,9 +46,14 @@ export default {
           { key: "Sarah Drasner", value: "sarah_edo" },
           { key: "Evan You", value: "youyuxi" },
           { key: "Adam Wathan", value: "adamwathan" }
-        ]
+        ],
+        positionMenu: false,
+        menuContainer: document.querySelector(".menu-container")
       }
     };
+  },
+  mounted() {
+    this.options.menuContainer = this.$refs.menuContainer;
   },
   methods: {
     noMatchFound() {
@@ -89,7 +95,7 @@ body {
   position: relative;
 }
 .container {
-  max-width: 500px;
+  max-width: 355px;
   width: 100%;
   display: flex;
   align-items: center;

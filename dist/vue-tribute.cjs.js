@@ -12,6 +12,28 @@ var VueTribute = {
       required: true
     }
   },
+  watch: {
+    options: {
+      immediate: false,
+      deep: true,
+      handler: function handler() {
+        var _this = this;
+
+        var $el = this.$slots.default[0].elm;
+
+        if (this.tribute) {
+          this.tribute.detach($el);
+          setTimeout(function () {
+            _this.tribute = new Tribute(_this.options);
+
+            _this.tribute.attach($el);
+
+            $el.tributeInstance = _this.tribute;
+          }, 0);
+        }
+      }
+    }
+  },
   mounted: function mounted() {
     if (typeof Tribute === "undefined") {
       throw new Error("[vue-tribute] cannot locate tributejs!");
@@ -20,6 +42,7 @@ var VueTribute = {
     var $el = this.$slots.default[0].elm;
     this.tribute = new Tribute(this.options);
     this.tribute.attach($el);
+    $el.tributeInstance = this.tribute;
   },
   beforeDestroy: function beforeDestroy() {
     var $el = this.$slots.default[0].elm;
