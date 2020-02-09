@@ -13,14 +13,18 @@ const VueTribute = {
       immediate: false,
       deep: true,
       handler() {
-        const $el = this.$slots.default[0].elm
         if (this.tribute) {
-          this.tribute.detach($el)
-          setTimeout(() => {
-            this.tribute = new Tribute(this.options)
-            this.tribute.attach($el)
-            $el.tributeInstance = this.tribute
-          }, 0)
+          setTimeout( () => {
+            var $el = this.$slots.default[0].elm;
+            this.tribute.detach($el);
+
+            setTimeout( () => {
+              $el = this.$slots.default[0].elm;
+              this.tribute = new Tribute(this.options);
+              this.tribute.attach($el);
+              $el.tributeInstance = this.tribute;
+            }, 0);
+          }, 0);
         }
       }
     }
