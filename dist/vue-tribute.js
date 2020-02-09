@@ -1810,16 +1810,20 @@
 	      handler: function handler() {
 	        var _this = this;
 
-	        var $el = this.$slots.default[0].elm;
-
 	        if (this.tribute) {
-	          this.tribute.detach($el);
 	          setTimeout(function () {
-	            _this.tribute = new Tribute(_this.options);
+	            var $el = _this.$slots.default[0].elm;
 
-	            _this.tribute.attach($el);
+	            _this.tribute.detach($el);
 
-	            $el.tributeInstance = _this.tribute;
+	            setTimeout(function () {
+	              var $el = _this.$slots.default[0].elm;
+	              _this.tribute = new Tribute(_this.options);
+
+	              _this.tribute.attach($el);
+
+	              $el.tributeInstance = _this.tribute;
+	            }, 0);
 	          }, 0);
 	        }
 	      }
