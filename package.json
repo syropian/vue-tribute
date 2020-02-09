@@ -1,6 +1,6 @@
 {
   "name": "vue-tribute",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Vue.js wrapper for Zurb's Tribute library for native @mentions",
   "main": "dist/vue-tribute.cjs.js",
   "module": "dist/vue-tribute.es.js",
