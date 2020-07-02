@@ -22,7 +22,7 @@ var VueTribute = {
             _this.tribute.detach($el);
 
             setTimeout(function () {
-              var $el = _this.$slots.default[0].elm;
+              $el = _this.$slots.default[0].elm;
               _this.tribute = new Tribute(_this.options);
 
               _this.tribute.attach($el);
@@ -43,6 +43,11 @@ var VueTribute = {
     this.tribute = new Tribute(this.options);
     this.tribute.attach($el);
     $el.tributeInstance = this.tribute;
+    $el.addEventListener("tribute-replaced", function (e) {
+      e.detail.event.target.dispatchEvent(new Event("input", {
+        bubbles: true
+      }));
+    });
   },
   beforeDestroy: function beforeDestroy() {
     var $el = this.$slots.default[0].elm;
