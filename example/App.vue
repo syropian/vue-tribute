@@ -8,14 +8,14 @@
         placeholder="@..."
         @tribute-no-match="noMatchFound"
         ref="foo"
-      >
+      />
     </vue-tribute>
-    <br>
+    <br />
     <h3>Textarea</h3>
     <vue-tribute :options="options">
       <textarea placeholder="@..."></textarea>
     </vue-tribute>
-    <br>
+    <br />
     <h3>contenteditable element</h3>
     <vue-tribute :options="options">
       <div
@@ -24,11 +24,8 @@
         placeholder="@..."
       ></div>
     </vue-tribute>
-    <br>
-    <button
-      @click="append"
-      class="btn"
-    >Append New Item</button>
+    <br />
+    <button @click="append" class="btn">Append New Item</button>
   </div>
 </template>
 <script>
@@ -47,7 +44,7 @@ export default {
           { key: "Evan You", value: "youyuxi" },
           { key: "Adam Wathan", value: "adamwathan" }
         ],
-        positionMenu: false,
+        positionMenu: true,
         menuContainer: document.querySelector(".menu-container")
       }
     };
@@ -86,7 +83,7 @@ body {
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-family: "Helvetica Neue", "Arial", sans-serif;
 }
 .scroll {
   width: 100%;
@@ -103,10 +100,13 @@ body {
   flex-direction: column;
   padding: 0 20px;
 }
+
 .v-tribute {
   width: 100%;
+  position: relative;
 }
-input[type='text'],
+
+input[type="text"],
 .content-editable {
   appearance: none;
   border: none;
