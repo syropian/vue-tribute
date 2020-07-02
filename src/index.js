@@ -43,9 +43,7 @@ const VueTribute = {
     $el.tributeInstance = this.tribute;
 
     $el.addEventListener("tribute-replaced", e => {
-      e.detail.event.target.dispatchEvent(
-        new Event("input", { bubbles: true })
-      );
+      e.target.dispatchEvent(new Event("input", { bubbles: true }));
     });
   },
   beforeDestroy() {

@@ -1839,7 +1839,7 @@
 	    this.tribute.attach($el);
 	    $el.tributeInstance = this.tribute;
 	    $el.addEventListener("tribute-replaced", function (e) {
-	      e.detail.event.target.dispatchEvent(new Event("input", {
+	      e.target.dispatchEvent(new Event("input", {
 	        bubbles: true
 	      }));
 	    });
