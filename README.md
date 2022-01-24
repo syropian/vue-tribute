@@ -1,11 +1,67 @@
-# Vue 3 + Typescript + Vite
+# vue-tribute ![test](https://github.com/syropian/vue-tribute/workflows/test/badge.svg?branch=next)
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A tiny Vue.js wrapper around Zurb's Tribute library for ES6 native @mentions.
 
-## Recommended IDE Setup
+> 🚦 Looking for Vue 2 support? Check out the [master branch](https://github.com/syropian/vue-tribute).
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## Install
 
-## Type Support For `.vue` Imports in TS
+```bash
+$ npm install vue-tribute@next --save
+# or...
+$ yarn add vue-tribute@next
+```
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+_or_
+
+Use the UMD build from [Unpkg](https://unpkg.com/vue-tribute), available as `VueTribute` in the global scope.
+
+```html
+<script src="/vendor/vue.js" />
+<script src="https://unpkg.com/vue-tribute@next" />
+```
+
+### Globally
+
+Import and register the module as a plugin.
+
+```javascript
+import { createApp } from 'vue'
+import App from './App.vue'
+import VueTribute from 'vue-tribute'
+
+createApp(App).use(VueTribute).mount('#app')
+```
+
+### Per-component
+
+```javascript
+import { VueTribute } from 'vue-tribute'
+
+export default {
+  components: { VueTribute },
+  setup() {
+    ...
+  },
+}
+```
+
+## Usage
+
+Wrap a single **text input**, **textarea**, or **contenteditable** element within the `VueTribute` component. You should then pass a [valid Tribute collection(s) object](https://github.com/zurb/tribute#initializing) to the component.
+
+## Events
+
+All [custom Tribute events](https://github.com/zurb/tribute#events) will work as expected. Simply attach listeners for them like you would any other event.
+
+```vue
+<template>
+  <vue-tribute :options="options">
+    <input type="text" placeholder="@..." @tribute-replaced="doSomething" />
+  </vue-tribute>
+</template>
+```
+
+## License
+
+MIT © [Collin Henderson](https://github.com/syropian)

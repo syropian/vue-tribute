@@ -12,13 +12,22 @@ module.exports = {
             h3: {
               color: theme('colors.gray.300'),
             },
+            h4: {
+              color: theme('colors.gray.300'),
+            },
             p: {
               color: theme('colors.gray.400'),
+            },
+            strong: {
+              color: theme('colors.gray.300'),
+            },
+            code: {
+              color: theme('colors.gray.100'),
             },
           },
         },
       }),
     },
   },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/typography')],
 }

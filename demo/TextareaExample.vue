@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <vue-tribute :options="options">
-      <input type="text" class="w-3/4 sm:1/2 input" placeholder="@..." />
+      <textarea class="w-3/4 sm:1/2 input" placeholder="@..." />
     </vue-tribute>
   </div>
 </template>
