@@ -4,6 +4,8 @@ A tiny Vue.js wrapper around Zurb's Tribute library for ES6 native @mentions.
 
 > 🚦 Looking for Vue 2 support? Check out the [master branch](https://github.com/syropian/vue-tribute).
 
+[View Demo](https://vue-tribute.netlify.app/)
+
 ## Install
 
 ```bash
