@@ -1,4 +1,5 @@
-# vue-tribute ![test](https://github.com/syropian/vue-tribute/workflows/test/badge.svg?branch=next)
+# vue-tribute [![Tests](https://github.com/syropian/vue-tribute/actions/workflows/test.yml/badge.svg?branch=next)](https://github.com/syropian/vue-tribute/actions/workflows/test.yml)
+
 
 A tiny Vue.js wrapper around Zurb's Tribute library for ES6 native @mentions.
 
