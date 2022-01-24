@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "vite",
     "start": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit --skipLibCheck && vite build",
     "build:demo": "vite build --mode demo",
     "preview": "vite preview",
     "serve": "vite preview",

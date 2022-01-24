@@ -13,5 +13,6 @@
     "lib": ["esnext", "dom"],
     "types": ["node", "vitest/globals"]
   },
-  "include": ["vite.config.ts", "env.d.ts", "lib/**/*.ts", "demo/**/*.ts", "demo/**/*.vue"]
+  "include": ["vite.config.ts", "env.d.ts", "lib/**/*.ts", "demo/**/*.ts", "demo/**/*.vue"],
+  "exclude": ["node_modules"]
 }
