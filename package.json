@@ -20,7 +20,8 @@
     "build:demo": "vite build --mode demo",
     "preview": "vite preview",
     "serve": "vite preview",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "format": "prettier ./lib ./demo  -w -u"
   },
   "dependencies": {},
