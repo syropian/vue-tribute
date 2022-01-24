@@ -1,6 +1,5 @@
 # vue-tribute [![Tests](https://github.com/syropian/vue-tribute/actions/workflows/test.yml/badge.svg?branch=next)](https://github.com/syropian/vue-tribute/actions/workflows/test.yml)
 
-
 A tiny Vue.js wrapper around Zurb's Tribute library for ES6 native @mentions.
 
 > 🚦 Looking for Vue 2 support? Check out the [master branch](https://github.com/syropian/vue-tribute).
@@ -49,7 +48,7 @@ export default {
 
 ## Usage
 
-Wrap a single **text input**, **textarea**, or **contenteditable** element within the `VueTribute` component. You should then pass a [valid Tribute collection(s) object](https://github.com/zurb/tribute#initializing) to the component.
+Wrap a single **text input**, **textarea**, or **contenteditable** element within the `VueTribute` component. You should then pass a [valid Tribute options object](https://github.com/zurb/tribute#initializing) to the component.
 
 ## Events
 
