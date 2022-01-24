@@ -4,6 +4,8 @@
 
 > A Vue.js wrapper for Zurb's [Tribute](https://github.com/zurb/tribute) library for native @mentions.
 
+> 🚦 Looking for Vue 3 support? Check out the [next branch](https://github.com/syropian/vue-tribute/tree/next).
+
 ## Install
 
 ```
