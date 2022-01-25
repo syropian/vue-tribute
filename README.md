@@ -52,6 +52,14 @@ export default {
 
 Wrap a single **text input**, **textarea**, or **contenteditable** element within the `VueTribute` component. You should then pass a [valid Tribute options object](https://github.com/zurb/tribute#initializing) to the component.
 
+```vue
+<template>
+  <vue-tribute :options="options">
+    <input type="text" placeholder="@..." />
+  </vue-tribute>
+</template>
+```
+
 ## Events
 
 All [custom Tribute events](https://github.com/zurb/tribute#events) will work as expected. Simply attach listeners for them like you would any other event.
