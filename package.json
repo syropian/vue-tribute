@@ -41,7 +41,7 @@
     "babel-jest": "^24.0.0",
     "bili": "^3.0.4",
     "jest": "^24.0.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "poi": "^10.0.0-beta.6",
     "sass-loader": "^8.0.2",
     "tributejs": "^5.1.3"
