@@ -86,9 +86,9 @@ import BasicExample from './BasicExample.vue'
 import TextareaExample from './TextareaExample.vue'
 import ContentEditableExample from './ContentEditableExample.vue'
 
-const installCode = `$ npm install vue-tribute@next --save
+const installCode = `$ npm install tributejs vue-tribute@next --save
 # or...
-$ yarn add vue-tribute@next`
+$ yarn add tributejs vue-tribute@next`
 
 const addGlobalCode = `import { createApp } from 'vue'
 import App from './App.vue'

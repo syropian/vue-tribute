@@ -9,17 +9,18 @@ A tiny Vue.js wrapper around Zurb's Tribute library for ES6 native @mentions.
 ## Install
 
 ```bash
-$ npm install vue-tribute@next --save
+$ npm install tributejs vue-tribute@next --save
 # or...
-$ yarn add vue-tribute@next
+$ yarn add tributejs vue-tribute@next
 ```
 
 _or_
 
-Use the UMD build from [Unpkg](https://unpkg.com/vue-tribute), available as `VueTribute` in the global scope.
+Use the UMD build from [Unpkg](https://unpkg.com/vue-tribute), available as `VueTribute` in the global scope. You will need to include Tribute.js yourself as it is a peer dependency.
 
 ```html
 <script src="/vendor/vue.js" />
+<script src="https://unpkg.com/tributejs" />
 <script src="https://unpkg.com/vue-tribute@next" />
 ```
 
