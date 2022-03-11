@@ -5,14 +5,14 @@ type Maybe<T> = T | undefined
 type MaybeRef<T> = T | Ref<T>
 
 interface TributeElement extends HTMLElement {
-  tributeInstance?: Tribute<any>
+  tributeInstance?: Tribute<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export const VueTribute = defineComponent({
-  name: 'vue-tribute',
+  name: 'VueTribute',
   props: {
     options: {
-      type: Object as PropType<MaybeRef<TributeOptions<any>>>,
+      type: Object as PropType<MaybeRef<TributeOptions<any>>>, // eslint-disable-line @typescript-eslint/no-explicit-any
       required: true,
     },
   },
@@ -24,10 +24,11 @@ export const VueTribute = defineComponent({
     const root = ref<HTMLElement>()
     const el = ref<TributeElement>()
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const attachTribute = (el: Ref<Maybe<TributeElement>>, options: MaybeRef<TributeOptions<any>> = props.options) => {
       if (!el.value) return
 
-      let tribute = new Tribute(unref(options))
+      const tribute = new Tribute(unref(options))
       tribute.attach(el.value)
       el.value.tributeInstance = tribute
     }
@@ -35,7 +36,7 @@ export const VueTribute = defineComponent({
     onMounted(() => {
       el.value = root.value?.childNodes[0] as TributeElement
 
-      if (!el) {
+      if (!el.value) {
         throw new Error('[vue-tribute] cannot find a suitable element to attach to.')
       }
 

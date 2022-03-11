@@ -9,14 +9,14 @@
           href="https://github.com/syropian/vue-tribute"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-block text-black transition-colors dark:text-gray-300 hover:text-purple-500"
+          class="inline-block text-black transition-colors hover:text-purple-500 dark:text-gray-300"
           aria-label="GitHub"
         >
           <GitHubIcon class="w-6 h-6 stroke-current" aria-hidden="true" />
         </a>
       </nav>
     </div>
-    <div class="w-full mx-auto mt-4 prose dark:prose-dark max-w-prose prose-a:text-purple-500">
+    <div class="w-full mx-auto mt-4 prose max-w-prose prose-a:text-purple-500 dark:prose-dark">
       <h2 class="pb-6 border-b border-gray-800">
         A tiny Vue wrapper for
         <a href="https://github.com/zurb/tribute" target="_blank" rel="noopener noreferrer" class="text-purple-500"
@@ -66,7 +66,7 @@
         </div>
       </div>
     </div>
-    <footer class="w-full pt-4 mx-auto mt-8 border-t border-gray-200 dark:border-gray-700 sm:mt-12 max-w-prose">
+    <footer class="w-full pt-4 mx-auto mt-8 border-t border-gray-200 max-w-prose dark:border-gray-700 sm:mt-12">
       <p class="text-gray-500">
         &copy; {{ new Date().getFullYear() }}
         <a
@@ -86,9 +86,9 @@ import BasicExample from './BasicExample.vue'
 import TextareaExample from './TextareaExample.vue'
 import ContentEditableExample from './ContentEditableExample.vue'
 
-const installCode = `$ npm install vue-input-autowidth@next --save
+const installCode = `$ npm install vue-tribute@next --save
 # or...
-$ yarn add vue-input-autowidth@next`
+$ yarn add vue-tribute@next`
 
 const addGlobalCode = `import { createApp } from 'vue'
 import App from './App.vue'
@@ -130,26 +130,26 @@ const options = {
 <style>
 /* Inputs */
 .input {
-  @apply transition-colors min-w-0 px-2 sm:px-3 py-2 rounded-md text-base sm:text-lg focus:outline-none border-2 border-gray-300 dark:border-gray-700 focus:border-purple-500 bg-white dark:bg-gray-800 dark:text-gray-200;
+  @apply min-w-0 rounded-md border-2 border-gray-300 bg-white px-2 py-2 text-base transition-colors focus:border-purple-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 sm:px-3 sm:text-lg;
 }
 
 /* Tribute Styles */
 .tribute-container {
-  @apply absolute top-0 left-0 h-auto overflow-y-auto block z-10 rounded mt-6 shadow-md;
+  @apply absolute top-0 left-0 z-10 mt-6 block h-auto overflow-y-auto rounded shadow-md;
   max-height: 300px;
   max-width: 500px;
 }
 
 .tribute-container ul {
-  @apply p-0 list-none rounded overflow-hidden;
+  @apply list-none overflow-hidden rounded p-0;
 }
 
 .tribute-container li {
-  @apply text-gray-800 pl-2 pr-6 py-2 cursor-pointer text-sm bg-white dark:bg-gray-700 dark:text-gray-100;
+  @apply cursor-pointer bg-white py-2 pl-2 pr-6 text-sm text-gray-800 dark:bg-gray-700 dark:text-gray-100;
 }
 .tribute-container li.highlight,
 .tribute-container li:hover {
-  @apply dark:bg-purple-900 dark:text-purple-300 text-purple-800 bg-purple-100;
+  @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300;
 }
 .tribute-container li span {
   @apply font-bold;

@@ -1,11 +1,13 @@
-import { defineComponent, h, onRenderTracked } from 'vue'
+import { defineComponent, h } from 'vue'
 import { render, screen } from '@testing-library/vue'
 import { VueTribute } from '../'
 import type Tribute from 'tributejs'
 import userEvent from '@testing-library/user-event'
 
+/* eslint-disable vue/one-component-per-file */
+
 interface TributeElement extends HTMLElement {
-  tributeInstance?: Tribute<any>
+  tributeInstance?: Tribute<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 describe('VueTribute', () => {
