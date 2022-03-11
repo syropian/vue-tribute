@@ -4,6 +4,8 @@ A tiny Vue.js wrapper around Zurb's Tribute library for ES6 native @mentions.
 
 > 🚦 Looking for Vue 2 support? Check out the [master branch](https://github.com/syropian/vue-tribute).
 
+[View Demo](https://vue-tribute.netlify.app/)
+
 ## Install
 
 ```bash
@@ -49,6 +51,14 @@ export default {
 ## Usage
 
 Wrap a single **text input**, **textarea**, or **contenteditable** element within the `VueTribute` component. You should then pass a [valid Tribute options object](https://github.com/zurb/tribute#initializing) to the component.
+
+```vue
+<template>
+  <vue-tribute :options="options">
+    <input type="text" placeholder="@..." />
+  </vue-tribute>
+</template>
+```
 
 ## Events
 
